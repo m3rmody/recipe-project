@@ -1,5 +1,6 @@
 package mermody.springframework.recipeproject.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import mermody.springframework.recipeproject.domain.*;
 import mermody.springframework.recipeproject.repositories.CategoryRepository;
 import mermody.springframework.recipeproject.repositories.RecipeRepository;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -29,6 +31,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading spring boot data");
     }
 
     private List<Recipe> getRecipes() {

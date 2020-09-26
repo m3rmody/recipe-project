@@ -1,16 +1,12 @@
 package mermody.springframework.recipeproject.controllers;
 
-import mermody.springframework.recipeproject.domain.Category;
-import mermody.springframework.recipeproject.domain.UnitOfMeasure;
-import mermody.springframework.recipeproject.repositories.CategoryRepository;
-import mermody.springframework.recipeproject.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import mermody.springframework.recipeproject.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Optional;
-
+@Slf4j
 @Controller
 public class IndexController {
 
@@ -22,7 +18,7 @@ public class IndexController {
 
     @RequestMapping({"", "/", "/index"})
     public String getIndexPage(Model model) {
-
+        log.debug("Getting index page");
         model.addAttribute("recipes", recipeService.getRecipes());
 
         return "index";
